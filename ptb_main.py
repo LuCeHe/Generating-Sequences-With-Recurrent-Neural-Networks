@@ -260,7 +260,7 @@ def sample(text, save_to_file=False, max_sample_length=300, temperature=100.0):
         text = text[1:] + corpus.vocabulary.idx2char[char_id]
 
         # rolling input text
-        inputs[0][0:(args.bptt - 1)] = inputs[0][1:]
+        inputs[0][0:(args.bptt - 1)] = inputs[0][1:].clone()
         inputs[0][args.bptt - 1][0] = char_id
         del outputs
 
